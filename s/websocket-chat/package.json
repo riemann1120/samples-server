@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "A simple WebSocket-based chat server.",
   "dependencies": {
-    "websocket": "^1.0.29"
+    "websocket": "^1.0.34"
   }
 }
