@@ -1,11 +1,13 @@
 // import { io } from "socket.io-client";
-const URL = "ws://localhost:3000";
+// const URL = "ws://localhost:5000";
+const URL = "https://300mm.top";
 var socket = new io(URL, {
     withCredentials: false,
     extraHeaders: {
         "sio-header": "300mm"
     },
-    transports: ["websocket"],
+    path: "/a2",
+    // transports: ["websocket"],
     debug: true
 });
 
@@ -86,6 +88,15 @@ document
       socket.emit("Hello", {
         msg: msgSend,
         usr: socket.id
-      }, (data) => { });
+      }, (data) => {
+
+	document.getElementById("txtMsg").value = "";
+	 });
 
     });
+
+document.getElementById("txtMsg").addEventListener("keydown", (ev) => {
+  if (ev.code === "Enter") {
+    document.getElementById("sendMsg").click();
+  }
+});

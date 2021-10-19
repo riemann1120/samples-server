@@ -3,19 +3,20 @@ const http = require("http");
 const socketio = require("socket.io");
 const path = require("path");
 
-const PORT = 3000
+const PORT = 5000
 const APP = express();
 
 const httpServer = http.createServer(APP);
 const SIO = new socketio.Server(httpServer, {
     cors: {
-        origin: "http://127.0.0.1:5500",
+        origin: "https://300mm.top",
         methods: [
             "GET", "POST"
         ],
         allowedHeaders: ["sio-header"],
         credentials: false
-    }
+    },
+    path: "/a2"
     /* options */
 });
 
@@ -79,5 +80,7 @@ APP.get('/look', (req, res) => {
 
 // Static Serving
 APP.use('/html', express.static(path.basename('../static')));
+APP.use('/dist', express.static(path.basename('../dist')));
+APP.use('/client', express.static(path.basename('../client')));
 
 httpServer.listen(PORT);
